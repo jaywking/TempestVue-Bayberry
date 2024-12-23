@@ -1,0 +1,14 @@
+{
+  "name": "Tempest Weather | Sugarhouse Park",
+  "short_name": "Tempest Weather",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
+  "display": "standalone"
+} 

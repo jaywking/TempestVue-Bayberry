@@ -1,0 +1,1 @@
+{"error":"Failed to test MyRadar API","details":"Request failed with status code 404","status":404,"url":"https://api.myradar.dev/v1/timeseries/point","params":{"latlons":"[[40.7608,-111.8910]]","as_csv":"true"},"headers":{"Accept":"text/csv","Subscription-Key":"36c17f812eb648c1ab6ab3496f5f7c6d","User-Agent":"axios/1.7.9","Accept-Encoding":"gzip, compress, deflate, br"}}

@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-indigo-950 to-slate-900;
+    @apply text-lg md:text-xl xl:text-2xl;
+    @apply selection:bg-blue-400/30 selection:text-white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-indigo-950/40 backdrop-blur-sm 
+           border border-white/10
+           shadow-lg shadow-indigo-950/20
+           rounded-2xl;
+  }
+
+  .weather-text-gradient {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-br from-blue-300 to-purple-300
+           font-light;
+  }
+
+  .metric-value {
+    @apply text-2xl font-medium text-white tracking-tight;
+  }
+
+  .metric-label {
+    @apply text-xs md:text-sm text-gray-400 font-light;
+  }
+}
+
+@layer utilities {
+  .high-contrast {
+    @apply text-white bg-black/50 
+           shadow-lg shadow-black/20;
+  }
+
+  .animate-weather {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* iOS safe area utilities */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Improve touch interactions */
+  .webkit-overflow-scrolling-touch {
+    -webkit-overflow-scrolling: touch;
+  }
+}
