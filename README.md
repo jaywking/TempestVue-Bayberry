@@ -2,7 +2,7 @@
 
 A modern, real-time weather visualization dashboard built with Next.js and Tailwind CSS. TempestVue provides a sleek interface for viewing weather data from Tempest Weather Stations.
 
-![TempestVue Screenshot](public/og-image.png)
+![TempestVue Screenshot](public/TempestVue.png)
 
 ## Example: 
 
