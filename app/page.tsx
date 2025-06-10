@@ -133,8 +133,8 @@ export default function Home() {
                             flex items-center gap-1.5 ml-3 md:ml-6
                             shrink-0"> {/* Prevent shrinking */}
               <span className="text-base md:text-lg">📍</span>
-              <span className="font-medium hidden sm:inline">Salt Lake City Station</span>
-              <span className="font-medium sm:hidden">SLC</span> {/* Short name for mobile */}
+              <span className="font-medium hidden sm:inline">Bayberry Hill</span>
+              <span className="font-medium sm:hidden">BBH</span> {/* Short name for mobile */}
             </div>
           </div>
         </div>
@@ -201,7 +201,7 @@ export default function Home() {
 
                 {/* Weather Map */}
                 <div className="flex-1 min-h-[35vh] lg:min-h-[45vh]">
-                  <WeatherRadar />
+                  <WeatherRadar lat={41.27029} lon={-73.46023} />
                 </div>
               </div>
 

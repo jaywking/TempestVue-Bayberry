@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
-// Add cache configuration
-export const revalidate = 3600; // Cache for 1 hour (3600 seconds)
+// Optional: set cache lifetime (1 hour)
+export const revalidate = 3600;
 
 export async function GET() {
   const stationId = process.env.TEMPEST_STATION_ID;
-  const token = process.env.NEXT_PUBLIC_TEMPEST_TOKEN;
+  const token = process.env.TEMPEST_TOKEN;
 
   if (!stationId || !token) {
+    console.error('❌ Missing TEMPEST_STATION_ID or TEMPEST_TOKEN');
     return NextResponse.json({ error: 'Missing configuration' }, { status: 500 });
   }
 
@@ -30,17 +31,18 @@ export async function GET() {
       }
     );
 
-    console.log('Current Temperature (F):', response.data.current_conditions.air_temperature);
-    console.log('Weather API Response:', {
-      timestamp: response.data.current_conditions?.timestamp,
-      temp: response.data.current_conditions?.air_temperature
-    });
+    const current = response.data?.current_conditions;
+
+    if (current) {
+      console.log(`✅ Temp: ${current.air_temperature}°F`);
+    } else {
+      console.warn('⚠️ No current_conditions found in response');
+    }
 
     return NextResponse.json(response.data);
-  } catch (err) {
-    if (err instanceof AxiosError) {
-      console.error('Error fetching weather data:', err.message);
-    }
+  } catch (err: any) {
+    console.error('🔥 Axios error:', err.message);
+    console.error('📄 Response data:', err.response?.data);
     return NextResponse.json({ error: 'Failed to fetch weather data' }, { status: 500 });
   }
-} 
+}

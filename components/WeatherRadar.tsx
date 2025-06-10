@@ -50,15 +50,21 @@ export default function WeatherRadar({
     if (typeof window === 'undefined' || !mapRef.current || mapInstanceRef.current) return;
 
     try {
-      mapInstanceRef.current = L.map(mapRef.current).setView([lat, lon], zoom);
-      
-      // Base layer
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '©OpenStreetMap, ©CartoDB',
-        maxZoom: 19
-      }).addTo(mapInstanceRef.current);
+mapInstanceRef.current = L.map(mapRef.current).setView([lat, lon], zoom);
 
-      setMap(mapInstanceRef.current);
+// Base layer
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '©OpenStreetMap, ©CartoDB',
+  maxZoom: 19
+}).addTo(mapInstanceRef.current);
+
+// 📍 Add marker
+L.marker([lat, lon])
+  .addTo(mapInstanceRef.current)
+  .bindPopup('Bayberry Hill');
+
+setMap(mapInstanceRef.current);
+
     } catch (err) {
       console.error('Map initialization error:', err);
       setError('Failed to initialize map');
